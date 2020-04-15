@@ -377,5 +377,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTouchPosition: {x: 0, y: 0, z: 0}
   currentTouchPosition: {x: 0, y: 0, z: 0}
-  xSpeed: 2.4
+  xSpeed: 1
   SpriteRenderer: {fileID: 1663514224}
