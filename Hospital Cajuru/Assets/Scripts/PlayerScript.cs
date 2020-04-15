@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
                     break;
                 case TouchPhase.Moved:
                     currentTouchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    transform.position += new Vector3((currentTouchPosition.x - startTouchPosition.x)*xSpeed, 0, 0);
+                    transform.position = new Vector3((currentTouchPosition.x - startTouchPosition.x)*xSpeed, 0, 0);
                     break;
                 case TouchPhase.Stationary:
                     currentTouchPosition = startTouchPosition;
