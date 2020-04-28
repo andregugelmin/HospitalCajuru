@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class PlayerScript : MonoBehaviour
                     break;
                 case TouchPhase.Moved:
                     currentTouchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    transform.position = new Vector3((currentTouchPosition.x - startTouchPosition.x)*xSpeed, 0, 0);
+                    transform.position = new Vector3((currentTouchPosition.x - startTouchPosition.x)*xSpeed, 2.2f, 0);
                     break;
                 case TouchPhase.Stationary:
                     currentTouchPosition = startTouchPosition;
@@ -65,5 +66,13 @@ public class PlayerScript : MonoBehaviour
         transform.position = objectPosition;
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
 
 }
