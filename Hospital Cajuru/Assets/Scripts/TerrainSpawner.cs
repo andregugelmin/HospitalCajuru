@@ -6,6 +6,8 @@ public class TerrainSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject terrainObj;
+    [SerializeField]
+    private GameObject cloudObj;
     private Vector3 spawnPos;
     [SerializeField]
     private float spawnTime;
