@@ -22,36 +22,35 @@ public class TerrainSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >= nextSpawnTime)
+        if(Time.time >= nextSpawnTime && GameSpeed.instance.gameState != GameSpeed.GameState.waitingBoost)
         {
-            SpawnTerrain();
-        }
-
-        if (Points.instance.points >= 100 && spawnTime > 4)
-        {
-            spawnTime -= 1;
-        }
-        if (Points.instance.points >= 300 && spawnTime > 3)
-        {
-            spawnTime -= 1;
-        }
-        if (Points.instance.points >= 500 && spawnTime > 2)
-        {
-            spawnTime -= 1;
-        }
-        if (Points.instance.points >= 800 && spawnTime > 1)
-        {
-            spawnTime -= 1;
-        }
+            int rand = Random.Range(0, 99);
+            if(rand <= 10)
+            {
+                SpawnCloud();
+            }
+            else
+            {
+                SpawnTerrain();
+            }
+            spawnTime = GameSpeed.instance.spawnTime;
+        }       
         
     }
 
     private void SpawnTerrain()
     {
         GameObject groundSpawned;
-        spawnPos = new Vector3(Random.Range(-2.4f, 2.4f), -6.0f, transform.position.y);
+        spawnPos = new Vector3(Random.Range(-2.4f, 2.4f), -6.0f, transform.position.z);
         groundSpawned = Instantiate(terrainObj, transform.position + spawnPos, transform.rotation);
         nextSpawnTime = Time.time + spawnTime;
         Points.instance.gainPoints(50);
+    }
+    private void SpawnCloud()
+    {
+        GameObject cloudSpawned;
+        spawnPos = new Vector3(Random.Range(-1.8f, 1.6f), -6.0f, transform.position.z);
+        cloudSpawned = Instantiate(cloudObj, transform.position + spawnPos, transform.rotation);
+        nextSpawnTime = Time.time + spawnTime;
     }
 }

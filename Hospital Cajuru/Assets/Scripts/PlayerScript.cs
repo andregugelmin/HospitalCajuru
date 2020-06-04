@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     private float objectHeight;
     [SerializeField]
     private GameObject SpriteRenderer;
-
+    private int timeBoost;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,31 +28,52 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-  
-
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                    startTouchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    currentTouchPosition = startTouchPosition;
-                    break;
-                case TouchPhase.Moved:
-                    currentTouchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    transform.position = new Vector3((currentTouchPosition.x - startTouchPosition.x)*xSpeed, 2.2f, 0);
-                    break;
-                case TouchPhase.Stationary:
-                    currentTouchPosition = startTouchPosition;
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                    break;
-                case TouchPhase.Ended:
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                    break;
-            }
+        switch (GameSpeed.instance.gameState)
+        {            
+            case GameSpeed.GameState.waitingBoost:
+                
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    switch (touch.phase)
+                    {
+                        case TouchPhase.Began:                            
+                            break;
+                       
+                        case TouchPhase.Ended:
+                            GameSpeed.instance.timeBoosted = timeBoost;
+                            break;
+                    }
+                }
+                break;
+            default:
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    switch (touch.phase)
+                    {
+                        case TouchPhase.Began:
+                            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                            startTouchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                            currentTouchPosition = startTouchPosition;
+                            break;
+                        case TouchPhase.Moved:
+                            currentTouchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                            transform.position = new Vector3((currentTouchPosition.x - startTouchPosition.x) * xSpeed, 2.2f, 0);
+                            break;
+                        case TouchPhase.Stationary:
+                            currentTouchPosition = startTouchPosition;
+                            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                            break;
+                        case TouchPhase.Ended:
+                            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                            break;
+                    }
+                }
+                break;
         }
+
+        
         
         
             
@@ -69,10 +90,33 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == "Ground" && GameSpeed.instance.gameState == GameSpeed.GameState.normal)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-    }
 
+        if(collision.gameObject.tag == "Cloud")
+        {
+            GameSpeed.instance.gameState = GameSpeed.GameState.waitingBoost;
+            collision.gameObject.GetComponent<Animator>().SetBool("isWaitingBoost", true);
+            SpriteRenderer.SetActive(false);
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Cloud")
+        {
+            timeBoost = collision.gameObject.GetComponent<Cloud>().timeBoost;
+            Debug.Log(timeBoost);
+            
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Cloud")
+        {            
+            collision.gameObject.GetComponent<Animator>().SetBool("isWaitingBoost", false);
+            SpriteRenderer.SetActive(true);
+        }
+    }
 }

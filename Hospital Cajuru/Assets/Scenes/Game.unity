@@ -301,6 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainObj: {fileID: 4017410331710658122, guid: 24de747d70e3844418f23290a13f0798,
     type: 3}
+  cloudObj: {fileID: 1829396366801561322, guid: 4d88d37f477f1e04596501735cd304c6,
+    type: 3}
   spawnTime: 5
 --- !u!4 &863273033
 Transform:
@@ -615,8 +617,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1624951419}
   - component: {fileID: 1624951418}
+  - component: {fileID: 1624951420}
   m_Layer: 0
-  m_Name: GamePoints
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,6 +652,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624951420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624951417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5285f130f010244ae111721ca651d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objSpeed: 0
+  objSpeedNormal: 1
+  objSpeedBoosted: 2
+  spawnTime: 0
+  spawnTimeNormal: 5
+  spawnTimeBoosted: 10
+  timeBoosted: 0
+  gameState: 0
 --- !u!1 &1663514224
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663514224}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27, y: 0.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2060096646}
@@ -961,7 +984,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.03, y: -0.14}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!50 &2060096649
@@ -982,6 +1005,6 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0

@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 6982420272242513017}
   - component: {fileID: 4355712008181417516}
   - component: {fileID: 4318185242926247425}
+  - component: {fileID: -4782137319694642043}
+  - component: {fileID: 8866451152699938113}
+  - component: {fileID: 2157998048456512762}
   m_Layer: 0
   m_Name: Nuvem
-  m_TagString: Untagged
+  m_TagString: Cloud
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,3 +111,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.431449, y: 0.9551295}
   m_EdgeRadius: 0
+--- !u!114 &-4782137319694642043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829396366801561322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5908fba51d8be94fbf856888b3825e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yspeed: 0
+--- !u!95 &8866451152699938113
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829396366801561322}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 849d46eb323fb664f81586c5d91f2697, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2157998048456512762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829396366801561322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74441872e7572c548b5ff5147c30b1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBoost: 0
