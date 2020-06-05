@@ -6,7 +6,9 @@ using TMPro;
 
 public class textPoints : MonoBehaviour
 {
-    private TextMeshProUGUI pointText;
+    public float points = 0.0f;
+    public TextMeshProUGUI pointText;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class textPoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pointText.text = Points.instance.points.ToString();
+        pointText.text = points.ToString("F0");
+        points += Time.deltaTime;
     }
 }
