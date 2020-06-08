@@ -16,6 +16,8 @@ public class PlayerScript : MonoBehaviour
     private float objectHeight;
     [SerializeField]
     private GameObject SpriteRenderer;
+    [SerializeField]
+    private GameObject SpriteRenderer2;
     private int timeBoost;
     // Start is called before the first frame update
     void Start()
@@ -100,6 +102,7 @@ public class PlayerScript : MonoBehaviour
             GameSpeed.instance.gameState = GameSpeed.GameState.waitingBoost;
             collision.gameObject.GetComponent<Animator>().SetBool("isWaitingBoost", true);
             SpriteRenderer.SetActive(false);
+            SpriteRenderer2.SetActive(false);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -117,6 +120,7 @@ public class PlayerScript : MonoBehaviour
         {            
             collision.gameObject.GetComponent<Animator>().SetBool("isWaitingBoost", false);
             SpriteRenderer.SetActive(true);
+            SpriteRenderer2.SetActive(true);
         }
     }
 }
