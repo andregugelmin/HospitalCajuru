@@ -14,6 +14,7 @@ public class textPoints : MonoBehaviour
     void Start()
     {
         pointText = gameObject.GetComponent<TextMeshProUGUI>();
+        Points.instance.points = 0;
     }
 
     // Update is called once per frame

@@ -55,19 +55,13 @@ public class GameSpeed : MonoBehaviour
                 objSpeed = 0;                
                 break;
         }
-        if (Points.instance.points >= 30 && spawnTime > 4)
+
+        if (Points.instance.points >= 250 && spawnTime > 1)
         {
-            spawnTimeNormal = 4;
-            objSpeedNormal = 2;
-            spawnTimeBoosted = 2;
-            objSpeedBoosted = 4;
-        }
-        else if (Points.instance.points >= 60 && spawnTime > 3)
-        {
-            spawnTimeNormal = 3;
-            objSpeedNormal = 3;
-            spawnTimeBoosted = 1;
-            objSpeedBoosted = 6;
+            spawnTimeNormal = 1;
+            objSpeedNormal = 5;
+            spawnTimeBoosted = 0.5f;
+            objSpeedBoosted = 10;
         }
         else if (Points.instance.points >= 120 && spawnTime > 2)
         {
@@ -76,13 +70,30 @@ public class GameSpeed : MonoBehaviour
             spawnTimeBoosted = 0.75f;
             objSpeedBoosted = 8;
         }
-        else if (Points.instance.points >= 250 && spawnTime > 1)
+        else if (Points.instance.points >= 60 && spawnTime > 3)
         {
-            spawnTimeNormal = 1;
-            objSpeedNormal = 5;
-            spawnTimeBoosted = 0.5f;
-            objSpeedBoosted = 10;
+            spawnTimeNormal = 3;
+            objSpeedNormal = 3;
+            spawnTimeBoosted = 1;
+            objSpeedBoosted = 6;
         }
+        else if (Points.instance.points >= 30 && spawnTime > 4)
+        {
+            spawnTimeNormal = 4;
+            objSpeedNormal = 2;
+            spawnTimeBoosted = 2;
+            objSpeedBoosted = 4;
+        }
+        else
+        {
+            spawnTimeNormal = 6;
+            objSpeedNormal = 1;
+            spawnTimeBoosted = 3;
+            objSpeedBoosted = 2;
+        }
+       
+        
+        
 
         if(timeBoosted > 0)
         {
