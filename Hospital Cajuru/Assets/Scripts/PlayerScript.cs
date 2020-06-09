@@ -95,6 +95,7 @@ public class PlayerScript : MonoBehaviour
         if(collision.gameObject.tag == "Ground" && GameSpeed.instance.gameState == GameSpeed.GameState.normal)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Points.instance.finalPoints = Points.instance.points;
         }
 
         if(collision.gameObject.tag == "Cloud")

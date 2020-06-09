@@ -44,7 +44,7 @@ public class TerrainSpawner : MonoBehaviour
         spawnPos = new Vector3(Random.Range(-2.4f, 2.4f), -6.0f, transform.position.z);
         groundSpawned = Instantiate(terrainObj, transform.position + spawnPos, transform.rotation);
         nextSpawnTime = Time.time + spawnTime;
-        Points.instance.gainPoints(50);
+        
     }
     private void SpawnCloud()
     {

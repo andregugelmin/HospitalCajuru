@@ -55,28 +55,28 @@ public class GameSpeed : MonoBehaviour
                 objSpeed = 0;                
                 break;
         }
-        if (Points.instance.points >= 100 && spawnTime > 4)
+        if (Points.instance.points >= 30 && spawnTime > 4)
         {
             spawnTimeNormal = 4;
             objSpeedNormal = 2;
             spawnTimeBoosted = 2;
             objSpeedBoosted = 4;
         }
-        else if (Points.instance.points >= 300 && spawnTime > 3)
+        else if (Points.instance.points >= 60 && spawnTime > 3)
         {
             spawnTimeNormal = 3;
             objSpeedNormal = 3;
             spawnTimeBoosted = 1;
             objSpeedBoosted = 6;
         }
-        else if (Points.instance.points >= 500 && spawnTime > 2)
+        else if (Points.instance.points >= 120 && spawnTime > 2)
         {
             spawnTimeNormal = 2;
             objSpeedNormal = 4;
             spawnTimeBoosted = 0.75f;
             objSpeedBoosted = 8;
         }
-        else if (Points.instance.points >= 800 && spawnTime > 1)
+        else if (Points.instance.points >= 250 && spawnTime > 1)
         {
             spawnTimeNormal = 1;
             objSpeedNormal = 5;

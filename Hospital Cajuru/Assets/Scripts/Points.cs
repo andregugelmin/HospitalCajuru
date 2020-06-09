@@ -6,7 +6,7 @@ public class Points : MonoBehaviour
 {
 
     public static Points instance { get; private set; }
-    public int points;
+    public float points, finalPoints;
 
     private void Awake()
     {
@@ -19,10 +19,12 @@ public class Points : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        points = 0;
+    }
+    private void Update()
+    {
+        points += Time.deltaTime;
     }
 
-    public void gainPoints(int p)
-    {
-        points += p;
-    }
+    
 }
