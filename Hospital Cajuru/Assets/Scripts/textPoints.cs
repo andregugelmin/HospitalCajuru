@@ -8,11 +8,13 @@ public class textPoints : MonoBehaviour
 {
     
     public TextMeshProUGUI pointText;
-   
+  
+
 
     // Start is called before the first frame update
     void Start()
     {
+        Points.instance.points = 0;
         pointText = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
