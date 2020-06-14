@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private GameObject SpriteRenderer2;
     private int timeBoost;
+    public AudioClip sound;
+    private AudioSource source { get { return GetComponent<AudioSource>(); } }
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +98,7 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Points.instance.finalPoints = Points.instance.points;
+            source.PlayOneShot(sound);
         }
 
         if(collision.gameObject.tag == "Cloud")
